@@ -1,0 +1,28 @@
+body {
+    background-color: peru;
+}
+
+h1 {
+    color:white;
+}
+
+.color {
+    color: #7f8c8d;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.clicked {
+    color: aquamarine;
+}
+
+.form,
+.greetings {
+    display: none;
+}
+
+.showing {
+    display: block;
+}
