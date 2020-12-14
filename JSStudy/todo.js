@@ -4,7 +4,23 @@ const toDoForm = document.querySelector(".js-toDoForm"),
 
 const TODOS_LS = "toDos";
 
-const toDos = []; //list
+let toDos = []; //list
+
+function filterFn(toDo) {
+    return toDo.id === 1;
+}
+
+function deleteToDo(event) {
+    //console.dir(event.target);
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li);
+    // filter 는 각 요소마다 해당 함수 실행하고 true 리턴한 것만 모아서 새로운 array 만듬
+    const cleanToDos = toDos.filter(function (toDo) {
+        return toDo.id !== parseInt(li.id);
+    });
+    toDos = cleanToDos;
+}
 
 function saveToDos() {
     // localstorage in must string type
@@ -18,10 +34,11 @@ function paintToDo(text) {
     const span = document.createElement("span");
     const newId = toDos.length + 1;
     delBtn.innerHTML = "X";
+    delBtn.addEventListener("click", deleteToDo)
     span.innerText = text;
     li.appendChild(span); // span 을 li 안에 넣기
     li.appendChild(delBtn);
-    li.id = newId;
+    li.id = newId.toString();
     toDoList.appendChild(li);
     const toDoObj = {
         text: text,
