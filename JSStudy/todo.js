@@ -13,10 +13,9 @@ function deleteToDo(event) {
     const li = btn.parentNode;
     toDoList.removeChild(li);
     // filter 는 각 요소마다 해당 함수 실행하고 true 리턴한 것만 모아서 새로운 array 만듬
-    const cleanToDos = toDos.filter(function (toDo) {
+    toDos = toDos.filter(function (toDo) {
         return toDo.id !== parseInt(li.id);
     });
-    toDos = cleanToDos;
 }
 
 function saveToDos() {
